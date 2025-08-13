@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.main-content{
+    margin-top: 75px;
+    margin-left: 80px;
+    min-height: calc(100vh - 75px);
+    width: calc(100% - 80px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* When navigation is open - support both body.nav-open and .navigational-tab.open */
+body.nav-open .main-content,
+.navigational-tab.open ~ * .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+@media(max-width: 768px){
+    .main-content{
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    .navigational-tab.open ~ * .main-content,
+    body.nav-open .main-content{
+        margin-left: 0;
+        width: 100%;
+    }
+}

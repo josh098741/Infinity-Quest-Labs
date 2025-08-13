@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url(images/rainforest1.jpg) center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: #f7f7f7fd;
+    max-width: 450px;
+    width: 100%;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.input-containers {
+    position: relative;
+    margin: 20px 0;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background: transparent;
+    outline: none;
+    color: #fff;
+}
+
+label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #f7f7f7;
+    color: #999;
+    font-size: 16px;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: 0.3s ease all;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 8px;
+    font-size: 12px;
+    color: #333;
+}
+
+.input-containers button{
+    color: black;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    width: 150px;
+    padding: 5px 0;
+    background: linear-gradient(90deg,rgb(60, 210, 60),blue);
+    background-position: left center;
+    background-size: 200% auto;
+    transition: background 0.3s linear;
+}
+
+.input-containers button:hover{
+    cursor: pointer;
+    background-position: right center;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+    input {
+        font-size: 14px;
+    }
+    label {
+        font-size: 14px;
+    }
+}

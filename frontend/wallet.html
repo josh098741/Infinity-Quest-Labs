@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="wallet.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="icon" href="images/iql2.png">
+        <title>Wallet</title>
+    </head>
+
+    <body>
+        <div id="navigation-placeholder"></div>
+        
+        <div class="main-content">
+            <div class="main-content-container">
+                <h1>Wallet</h1>
+                <p>Content for the Wallet page will go here.</p>
+            </div>
+        </div>
+
+        <script>
+            fetch('navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const navDoc = parser.parseFromString(data, 'text/html');
+
+                    const navTab = navDoc.querySelector('.navigational-tab');
+                    const header = navDoc.querySelector('.header-container');
+                    const script = navDoc.querySelector('script');
+
+                    const placeholder = document.getElementById('navigation-placeholder');
+                    placeholder.appendChild(navTab);
+                    placeholder.appendChild(header);
+
+                    const scriptElement = document.createElement('script');
+                    scriptElement.innerHTML = script.innerHTML;
+                    document.body.appendChild(scriptElement);
+                    
+                    // Add additional functionality to sync body class with navigation state
+                    setTimeout(() => {
+                        const navTabElement = document.querySelector('.navigational-tab');
+                        const bodyElement = document.body;
+                        
+                        // Create a MutationObserver to watch for class changes on navTab
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((mutation) => {
+                                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                    if (navTabElement.classList.contains('open')) {
+                                        bodyElement.classList.add('nav-open');
+                                    } else {
+                                        bodyElement.classList.remove('nav-open');
+                                    }
+                                }
+                            });
+                        });
+                        
+                        // Start observing
+                        observer.observe(navTabElement, {
+                            attributes: true,
+                            attributeFilter: ['class']
+                        });
+                        
+                        // Set initial state
+                        if (navTabElement.classList.contains('open')) {
+                            bodyElement.classList.add('nav-open');
+                        }
+                    }, 100);
+                })
+                .catch(error => console.log('Error loading navigation', error))
+        </script>
+    </body>
+</html>

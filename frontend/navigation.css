@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+}
+
+/* Header Container - Fixed positioning */
+.header-container {
+    background: rgb(234, 218, 218);
+    position: fixed;
+    top: 0;
+    left: 80px;
+    width: calc(100% - 80px);
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 9;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-container .header-content .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-container .header-content .logo-section img {
+    width: 60px;
+}
+
+.header-container .header-content .central-container {
+    margin-left: auto;
+}
+
+.header-container .header-content .central-container .headers-container {
+    display: flex;
+}
+
+.header-container .header-content .central-container .headers-container .header-item {
+    margin: 0 15px;
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+}
+
+.header-container .header-content .central-container .headers-container .header-item::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, rgb(1, 157, 253), rgb(250, 18, 56));
+    width: 0%;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+}
+
+.header-container .header-content .central-container .headers-container .header-item:hover::after {
+    width: 100%;
+}
+
+.header-container .header-content .profile-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-left: 20px;
+}
+
+.header-container .header-content .profile-area i {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.header-container .header-content .profile-area img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Menu Toggle - Positioned at intersection of header and sidebar */
+.menu-toggle {
+    position: fixed;
+    left: 40px;
+    top: 0;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 25;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu-toggle i {
+    position: absolute;
+    font-size: 1.4rem;
+    color: #10bfea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: color 0.3s ease;
+}
+
+/* Navigational Tab - Improved styling */
+.navigational-tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100vh;
+    background: #2c3e50;
+    transition: width 0.3s ease;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.navigational-tab.open {
+    width: 250px;
+}
+
+.navigational-tab.open ~ .header-container {
+    left: 250px;
+    width: calc(100% - 250px);
+}
+
+.navigational-tab.open .menu-toggle {
+    left: 210px;
+}
+
+.navigational-tab .menu {
+    top: 80px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Search Box in Nav */
+.navigational-tab .menu .search-box {
+    height: 60px;
+    padding: 0 15px;
+}
+
+.menu .search-box {
+    margin: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+    height: 45px;
+}
+
+.menu .search-box i {
+    font-size: 1.1rem;
+    color: #ecf0f1;
+}
+
+.menu .search-box input[type='search'] {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: white;
+    font-weight: 500;
+}
+
+.menu .search-box input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Navigation Items */
+.navigational-tab .menu .items .item {
+    padding: 15px 10px;
+    background: rgba(0,0,0,0.2);
+    margin: 8px 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navigational-tab .menu .items .item:hover {
+    background: rgba(0,0,0,0.3);
+    transform: translateX(5px);
+    cursor: pointer;
+}
+
+.navigational-tab .menu .items .item a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ecf0f1;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.navigational-tab .menu .items .item a i {
+    font-size: 1.2rem;
+    min-width: 24px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* Tablet & Small Laptop */
+@media (max-width: 1024px) {
+    .header-container .header-content .central-container .headers-container .header-item {
+        margin: 0 10px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile Screens - Bottom Navigation */
+@media (max-width: 768px) {
+    .header-container {
+        left: 0;
+        width: 100%;
+        padding: 0 10px;
+        height: 65px;
+    }
+    
+    /* Hide side navigation on mobile */
+    .navigational-tab {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: #2c3e50;
+        transform: translateY(0);
+        z-index: 15;
+        overflow: hidden;
+        border-top: 2px solid rgba(255,255,255,0.1);
+    }
+    
+    .navigational-tab.open {
+        width: 100%;
+        height: 80px;
+    }
+    
+    .navigational-tab.open ~ .header-container {
+        left: 0;
+        width: 100%;
+    }
+    
+    .menu-toggle {
+        right: 15px;
+        top: 15px;
+        position: fixed;
+        background: rgba(255,255,255,0.9);
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .menu-toggle i {
+        border: none;
+        width: auto;
+        height: auto;
+        background: transparent;
+        font-size: 1.4rem;
+        color: #333;
+    }
+    
+    .header-container .header-content .central-container {
+        display: none;
+    }
+    
+    .header-container .header-content .logo-section h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-container .header-content .profile-area {
+        gap: 10px;
+    }
+    
+    .header-container .header-content .profile-area i {
+        font-size: 1.1rem;
+    }
+    
+    .header-container .header-content .profile-area img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Redesign navigation menu for bottom bar */
+    .navigational-tab .menu {
+        top: 0;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Hide search box on mobile bottom nav */
+    .menu .search-box {
+        display: none;
+    }
+    
+    /* Horizontal navigation items for bottom bar */
+    .navigational-tab .menu .items {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+        padding: 0 10px;
+    }
+    
+    .navigational-tab .menu .items .item {
+        padding: 8px 12px;
+        margin: 0;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.2);
+        flex: 1;
+        max-width: 80px;
+        text-align: center;
+    }
+    
+    .navigational-tab .menu .items .item:hover {
+        transform: translateY(-3px);
+        background: rgba(0,0,0,0.4);
+    }
+    
+    .navigational-tab .menu .items .item a {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    
+    .navigational-tab .menu .items .item a i {
+        font-size: 1.4rem;
+        min-width: auto;
+    }
+    
+    .header-container .header-content .profile-area {
+        gap: 8px;
+    }
+    
+    .header-container .header-content .profile-area i {
+        font-size: 1rem;
+    }
+    
+    .header-container .header-content .profile-area img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Extra Small Phones */
+@media (max-width: 480px) {
+    .header-container {
+        height: 60px;
+        padding: 0 8px;
+    }
+    
+    .header-container .header-content .logo-section img {
+        width: 45px;
+    }
+    
+    .header-container .header-content .logo-section h1 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ultra Small Screens */
+@media (max-width: 360px) {
+    .header-container {
+        height: 55px;
+        padding: 0 6px;
+    }
+    
+    .header-container .header-content .logo-section img {
+        width: 40px;
+    }
+    
+    .header-container .header-content .logo-section h1 {
+        font-size: 1rem;
+    }
+    
+    .navigational-tab {
+        width: 260px;
+    }
+}

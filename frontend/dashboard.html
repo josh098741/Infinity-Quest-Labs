@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="icon" href="images/iql2.png">
+</head>
+
+<body>
+
+    <!-- Side Navigational Tab -->
+    <div class="navigational-tab">
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="menu">
+            <!-- Search Box -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Search">
+            </div>
+
+            <!-- Navigation Items -->
+            <ul class="items">
+                <li class="item">
+                    <a href="dashboard.html"><i class="fa-solid fa-desktop"></i>DashBoard</a>
+                </li>
+                <li class="item">
+                    <a href="Student-Hub.html"><i class="fa-solid fa-building-columns"></i>Student Hub</a>
+                </li>
+                <li class="item">
+                    <a href="Archives.html"><i class="fa-solid fa-layer-group"></i>Archives</a>
+                </li>
+                <li class="item">
+                    <a href="Marketplace.html"><i class="fa-solid fa-cart-shopping"></i>Marketplace</a>
+                </li>
+                <li class="item">
+                    <a href="wallet.html"><i class="fa-solid fa-wallet"></i>Wallet</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header-container">
+        <nav class="header-content">
+            <!-- Logo -->
+            <div class="logo-section">
+                <img src="images/iql2.png" style="width: 70px;" alt="iqls-logo">
+                <h1>IQL</h1>
+            </div>
+
+            <!-- Central Navigation -->
+            <div class="central-container">
+                <ul class="headers-container">
+                    <li class="header-item"><a href="home.html">Home</a></li>
+                    <li class="header-item"><a href="#introduction">Explore</a></li>
+                    <li class="header-item"><a href="contacts.html">Contact Us</a></li>
+                    <li class="header-item">Premium</li>
+                </ul>
+            </div>
+
+            <!-- Profile Area -->
+            <div class="profile-area">
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-envelope"></i>
+                <img src="images/josh.jpg" alt="photograph">
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+        </nav>
+    </div>
+
+    <div class="new-content">
+        <div class="timer">
+            <h2>Here for all of your Educational Needs</h2>
+        </div>
+        <div class="second-line">
+            <div class="first-item1">
+                <img src="images/tech.jpg">
+                <div  class="bottom"></div>
+                <h2>Teck Weekly</h2>
+            </div>
+            <div class="first-item2">
+                <img src="images/blog.jpg">
+                <div class="bottom"></div>
+                <h2>Blog Hub</h2>
+            </div>
+            <div class="first-item3">
+                <img src="images/stockImage.jpg">
+                <div class="bottom"></div>
+                <h2>Stock Market</h2>
+            </div>
+        </div>
+        <div class="introduction" id="introduction">
+            <div class="introduction-inner1">
+                <h2>Introduction</h2>
+                <p>Here at Infinity Quest Labs we are dedicated to help you as a student archive your potential in all sectors</p>
+                <p>Whatever you need we have it</p>
+                <ol>
+                    <li><a href="">Tutors</a></li>
+                    <li><a href="">Study Materials</a></li>
+                    <li><a href="">Educational videos</a></li>
+                    <li><a href="">Programming Intros & Mastery</a></li>
+                </ol>
+                <p>we are here to serve and guide you on your journey to greatness</p>
+            </div>
+            <div class="introduction-inner2">
+                <h2>Upcoming Content</h2>
+                <ol>
+                    <li><a href="">Stock Exchange</a></li>
+                    <p>We are currently in collaboration with uniconnect creating an algorithm which will increase your chances of making it big</p>
+                    <li><a href="">Online Games</a></li>
+                    <p>We are centered in content diversification and hence will also be bringing you games to chill and relax you as we know how campus life can be stressfull</p>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+    <script>
+        const menuIcon = document.querySelector(".fa-bars");
+        const navTab = document.querySelector(".navigational-tab");
+
+        // Function to open the navigation sidebar
+        function openNavigation() {
+            if (!navTab.classList.contains("open")) {
+                navTab.classList.add("open");
+                menuIcon.classList.remove("fa-bars");
+                menuIcon.classList.add("fa-xmark");
+            }
+        }
+
+        // Function to close the navigation sidebar
+        function closeNavigation() {
+            if (navTab.classList.contains("open")) {
+                navTab.classList.remove("open");
+                menuIcon.classList.remove("fa-xmark");
+                menuIcon.classList.add("fa-bars");
+            }
+        }
+
+        // Function to toggle the navigation sidebar
+        function toggleNavigation() {
+            navTab.classList.toggle("open");
+
+            if (navTab.classList.contains("open")) {
+                menuIcon.classList.remove("fa-bars");
+                menuIcon.classList.add("fa-xmark");
+            } else {
+                menuIcon.classList.remove("fa-xmark");
+                menuIcon.classList.add("fa-bars");
+            }
+        }
+
+        // Menu toggle button click handler
+        menuIcon.addEventListener("click", function () {
+            toggleNavigation();
+        });
+
+        // Add click event listeners to navigation item icons
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const navItems = document.querySelectorAll('.navigational-tab .items .item a');
+                
+                navItems.forEach(function(item) {
+                    const icon = item.querySelector('i');
+                    if (icon) {
+                        // Add click handler to the icon specifically
+                        icon.addEventListener('click', function(e) {
+                            e.preventDefault(); // Prevent immediate navigation
+                            
+                            // Open the navigation sidebar
+                            openNavigation();
+                            
+                            // Get the parent link's href
+                            const href = item.getAttribute('href');
+                            
+                            // Navigate to the link after a short delay to show the opened nav
+                            if (href && href !== '' && href !== '#') {
+                                setTimeout(function() {
+                                    window.location.href = href;
+                                }, 300); // 300ms delay to show the animation
+                            }
+                        });
+                        
+                        // Add hover effect to show it's clickable
+                        icon.style.cursor = 'pointer';
+                        icon.style.transition = 'transform 0.2s ease';
+                        
+                        icon.addEventListener('mouseenter', function() {
+                            this.style.transform = 'scale(1.1)';
+                        });
+                        
+                        icon.addEventListener('mouseleave', function() {
+                            this.style.transform = 'scale(1)';
+                        });
+                    }
+                    
+                    // Also add click handler to the entire nav item for normal navigation
+                    item.addEventListener('click', function(e) {
+                        // If the click is on the icon, let the icon handler deal with it
+                        if (e.target.tagName === 'I') {
+                            return;
+                        }
+                        
+                        // For text clicks, just navigate normally
+                        const href = this.getAttribute('href');
+                        if (href && href !== '' && href !== '#') {
+                            // Brief delay to allow any animations
+                            setTimeout(function() {
+                                window.location.href = href;
+                            }, 100);
+                        }
+                    });
+                });
+            }, 100);
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navTab.contains(event.target);
+            const isClickInsideToggle = document.querySelector('.menu-toggle').contains(event.target);
+            
+            if (window.innerWidth <= 768 && navTab.classList.contains('open') && 
+                !isClickInsideNav && !isClickInsideToggle) {
+                closeNavigation();
+            }
+        });
+
+        // Add keyboard support - press 'Escape' to close navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeNavigation();
+            }
+        });
+    </script>
+</body>
+</html>

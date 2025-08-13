@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Student-Hub.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="icon" href="images/iql2.png">
+        <title>Student-Hub</title>
+    </head>
+
+    <body>
+        <div id="navigation-placeholder"></div>
+
+        <div class="main-content">
+            <div class="main-content-container">
+                <a href="">
+                    <div class="units-grade-work">
+                        <h3>Unit Grade Work</h3>
+                        <ul>
+                            <li>Assignments</li>
+                            <li>Cats & Rats</li>
+                            <li>Examinations</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="online-course-work">
+                        <h3>Online Course Work</h3>
+                        <ul>
+                            <li>Open Distance elerning</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="units-course-work">
+                        <h3>Unit Course Work</h3>
+                        <ul>
+                            <li>Thesis Writting</li>
+                            <li>Projects</li>
+                            <li>Reports Writting</li>
+                        </ul>s
+                    </div>
+                </a>
+            </div>
+            <div class="main-content-container2">
+                    <a href="jkuat.html">
+                        <div class="jkuat">
+                            <h3>Jomo Kenyetta University of Agriculture and Technology</h3>
+                        </div>
+                    </a>
+                    <a href="ku.html">
+                        <div class="kenyatta">
+                            <h3>Kenyatta University</h3>
+                        </div>
+                    </a>
+                    <a href="kisii.html">
+                        <div class="kisii">
+                            <h3>Kisii University</h3>
+                        </div>
+                    </a>
+                    <a href="egerton.html">
+                        <div class="egerton">
+                            <h3>Egerton University</h3>
+                        </div>
+                    </a>
+                    <a href="uon.html">
+                        <div class="uon">
+                            <h3>University of Nairobi</h3>
+                        </div>
+                    </a>
+            </div>
+        </div>
+
+        <script>
+            fetch('navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const navDoc = parser.parseFromString(data, 'text/html');
+
+                    const navTab = navDoc.querySelector('.navigational-tab');
+                    const header = navDoc.querySelector('.header-container');
+                    const script = navDoc.querySelector('script');
+
+                    const placeholder = document.getElementById('navigation-placeholder');
+                    placeholder.appendChild(navTab);
+                    placeholder.appendChild(header);
+
+                    const scriptElement = document.createElement('script');
+                    scriptElement.innerHTML = script.innerHTML;
+                    document.body.appendChild(scriptElement);
+                    
+                    // Add additional functionality to sync body class with navigation state
+                    setTimeout(() => {
+                        const navTabElement = document.querySelector('.navigational-tab');
+                        const bodyElement = document.body;
+                        
+                        // Create a MutationObserver to watch for class changes on navTab
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((mutation) => {
+                                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                    if (navTabElement.classList.contains('open')) {
+                                        bodyElement.classList.add('nav-open');
+                                    } else {
+                                        bodyElement.classList.remove('nav-open');
+                                    }
+                                }
+                            });
+                        });
+                        
+                        // Start observing
+                        observer.observe(navTabElement, {
+                            attributes: true,
+                            attributeFilter: ['class']
+                        });
+                        
+                        // Set initial state
+                        if (navTabElement.classList.contains('open')) {
+                            bodyElement.classList.add('nav-open');
+                        }
+                    }, 100);
+                })
+                .catch(error => console.log('Error loading navigation', error))
+        </script>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="icon" href="images/iql2.png">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="navigation.css">
+    
+    <!-- Your page-specific CSS -->
+    <link rel="stylesheet" href="your-page-styles.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Components -->
+    <div id="navigation-placeholder"></div>
+
+    <!-- Your Main Content -->
+    <div class="main-content">
+        <!-- Your page content goes here -->
+        <div class="page-header">
+            <h1>Your Page Content</h1>
+        </div>
+        
+        <div class="content-section">
+            <p>This is where your page-specific content will go.</p>
+            <!-- Add your content here -->
+        </div>
+    </div>
+
+    <!-- JavaScript to load navigation -->
+    <script>
+        // Load navigation component
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                // Extract only the navigation parts (skip html, head, body tags)
+                const parser = new DOMParser();
+                const navDoc = parser.parseFromString(data, 'text/html');
+                
+                // Get the navigation elements
+                const navTab = navDoc.querySelector('.navigational-tab');
+                const header = navDoc.querySelector('.header-container');
+                const script = navDoc.querySelector('script');
+                
+                // Insert navigation elements
+                const placeholder = document.getElementById('navigation-placeholder');
+                placeholder.appendChild(navTab);
+                placeholder.appendChild(header);
+                
+                // Add the navigation JavaScript
+                const scriptElement = document.createElement('script');
+                scriptElement.innerHTML = script.innerHTML;
+                document.body.appendChild(scriptElement);
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <style>
+        /* Content area styling to work with navigation */
+        .main-content {
+            margin-top: 75px;
+            margin-left: 80px;
+            width: calc(100% - 80px);
+            min-height: calc(100vh - 75px);
+            padding: 20px;
+            transition: margin-left 0.3s ease, width 0.3s ease;
+        }
+
+        /* Adjust content when navigation is open */
+        .navigational-tab.open ~ .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .navigational-tab.open ~ .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>

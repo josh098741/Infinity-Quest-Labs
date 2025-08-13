@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="signup.css">
+        <link rel="icon" href="images/iql2.png">
+        <title>Signup</title>
+    </head>
+    <body>
+        <div class="container">
+            <form id="signupForm" method="post">
+                <div class="input-section">
+                    <input type="email" placeholder="" id="email" required>
+                    <label for="email">email</label>
+                </div>
+
+                <div class="input-section">
+                    <input type="text" placeholder="" id="username" required>
+                    <label for="username">username</label>
+                </div>
+                <div class="input-section">
+                    <input type="password" placeholder="" id="password" required>
+                    <label for="password">password</label>
+                </div>
+
+                <div class="input-section">
+                    <input type="password" placeholder="" id="confirm-password" required>
+                    <label for="confirm-password">Confirm Password</label>
+                </div>
+
+                <div class="conditions">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms"><a href="Terms-and-conditions.html">Terms and Conditions</a></label>
+                </div>
+
+                <div class="input-section">
+                    <button id="submit" type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+
+        <script type="module" src="/backend/user-Auth.js" defer></script>
+    </body>
+</html>

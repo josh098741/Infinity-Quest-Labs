@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Page with Navigation</title>
+    <link rel="icon" href="images/iql2.png">
+    
+    <!-- Include navigation CSS -->
+    <link rel="stylesheet" href="navigation.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    
+    <!-- Your custom styles -->
+    <style>
+        /* Content area styling */
+        .main-content {
+            margin-top: 75px;
+            margin-left: 80px;
+            width: calc(100% - 80px);
+            min-height: calc(100vh - 75px);
+            padding: 20px;
+            transition: margin-left 0.3s ease, width 0.3s ease;
+        }
+
+        /* Adjust content when navigation is open */
+        .navigational-tab.open ~ .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .navigational-tab.open ~ .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Example content styles */
+        .page-header {
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your main content starts here -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Welcome to Your Page</h1>
+        </div>
+        
+        <div class="content-card">
+            <h2>How to Use Navigation</h2>
+            <p>The navigation has been automatically loaded! You can now:</p>
+            <ul>
+                <li>Click the hamburger menu to open/close the sidebar</li>
+                <li>Use the search box in the sidebar</li>
+                <li>Navigate between pages using the sidebar links</li>
+                <li>Access the header navigation and profile area</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2>Adding This to Your Pages</h2>
+            <p>To add navigation to any of your existing pages, simply:</p>
+            <ol>
+                <li>Include <code>navigation.css</code> in your head section</li>
+                <li>Include <code>navigation-include.js</code> before closing body tag</li>
+                <li>Add the content area CSS (like the styles above)</li>
+                <li>Wrap your content in a container with proper margins</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Include navigation JavaScript - THIS AUTOMATICALLY ADDS THE NAVIGATION -->
+    <script src="navigation-include.js"></script>
+</body>
+</html>
