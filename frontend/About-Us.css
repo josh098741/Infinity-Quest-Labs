@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --background-color: rgb(214, 204, 204);
+    --body-padding: 50px;
+    --header-background: white;
+    --text-color: black;
+    --body-radius: 15px;
+    --margin-top: 15px;
+}
+
+body{
+    font-family: 'Poppins',sans-serif;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+header{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-background);
+}
+
+.about-us{
+    padding: 0 var(--body-padding);
+}
+
+.about-us .introduction{
+    border: 3px solid black;
+    border-radius: var(--body-radius);
+    padding: 0 var(--body-padding);
+}
+
+.about-us .our-mission,
+.about-us .our-vision,
+.about-us .what-we-offer,
+.about-us .our-core-values,
+.about-us .Why-Choose-Us,
+.about-us .Call-to-Action,
+.about-us .our-story
+{
+    border: 3px solid black;
+    border-radius: var(--body-radius);
+    padding: 0 var(--body-padding);
+    margin-top: var(--margin-top);
+    text-wrap: wrap;
+}
+
+@media(max-width: 480px){
+    .about-us .introduction,
+    .about-us .our-mission,
+    .about-us .our-vision,
+    .about-us .what-we-offer,
+    .about-us .our-core-values,
+    .about-us .Why-Choose-Us,
+    .about-us .Call-to-Action,
+    .about-us .our-story{
+        padding: 0;
+        border: 0;
+    }
+}
