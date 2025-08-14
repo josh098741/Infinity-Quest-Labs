@@ -164,19 +164,14 @@
     </footer>
     
     <script>
-        // Filter functionality
+        
         document.addEventListener('DOMContentLoaded', function() {
             const filterBtns = document.querySelectorAll('.filter-btn');
             
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
                     this.classList.add('active');
-                    
-                    // In a real implementation, this would filter the cards
-                    // For this demo, we'll just show a message
                     const filterText = this.textContent;
                     if(filterText !== "All Schools") {
                         alert(`Filtering by: ${filterText}\nThis functionality would filter courses in a real implementation.`);
@@ -184,7 +179,7 @@
                 });
             });
             
-            // Course item click
+            
             const courseItems = document.querySelectorAll('.course-item');
             courseItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -193,7 +188,7 @@
                 });
             });
             
-            // Search functionality
+            
             const searchInput = document.querySelector('.search-box input');
             const searchButton = document.querySelector('.search-box button');
             
