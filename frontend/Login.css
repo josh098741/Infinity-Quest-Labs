@@ -7,58 +7,67 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+body{
+    background: url(images/iql2.png) center/cover no-repeat;
     min-height: 100vh;
-    background: url(images/rainforest1.jpg) center/cover no-repeat;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.container {
-    background: #f7f7f7fd;
-    max-width: 450px;
-    width: 100%;
-    padding: 30px;
-    backdrop-filter: blur(15px);
+.container{
+    min-width: 400px;
+    min-height: 400px;
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.201);
+    border: 1px solid gray;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
 }
 
-.input-containers {
+.container h1{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.container .input-containers{
     position: relative;
+    width: 270px;
     margin: 20px 0;
-    width: 100%;
 }
-
-input {
-    width: 100%;
-    padding: 12px;
+.input-containers{
+    display: flex;
+    justify-content: center;
+}
+.input-containers input{
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
+    padding: 12px 12px 12px 12px;
+    width: 100%;
     font-size: 16px;
-    background: transparent;
+    background: none;
     outline: none;
-    color: #fff;
 }
 
-label {
+.input-containers label{
     position: absolute;
     top: 12px;
     left: 12px;
-    background: #f7f7f7;
-    color: #999;
     font-size: 16px;
     padding: 0 4px;
+    background: #f7f7f7;
     pointer-events: none;
     transition: 0.3s ease all;
 }
 
 input:focus + label,
-input:not(:placeholder-shown) + label {
+input:not(:placeholder-shown) + label{
     top: -8px;
     left: 8px;
     font-size: 12px;
@@ -66,32 +75,19 @@ input:not(:placeholder-shown) + label {
 }
 
 .input-containers button{
-    color: black;
-    border: none;
-    border-radius: 15px;
     font-size: 16px;
-    width: 150px;
-    padding: 5px 0;
-    background: linear-gradient(90deg,rgb(60, 210, 60),blue);
-    background-position: left center;
+    font-weight: bold;
+    height: 40px;
+    color: white;
+    background: linear-gradient(90deg,rgb(0, 149, 255),rgb(229, 21, 153));
+    background-position: right center;
     background-size: 200% auto;
-    transition: background 0.3s linear;
+    border-radius: 10px;
+    width: 100px;
+    transition: all 0.3s ease;
+    border: 0;
 }
 
 .input-containers button:hover{
-    cursor: pointer;
-    background-position: right center;
-    color: white;
-}
-
-@media (max-width: 500px) {
-    .container {
-        padding: 20px;
-    }
-    input {
-        font-size: 14px;
-    }
-    label {
-        font-size: 14px;
-    }
+    background-position: left center;
 }
